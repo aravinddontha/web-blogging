@@ -1,0 +1,131 @@
+/* ---------- 1. COLORS ----------
+   Colors live in variables so light and dark mode are easy to change. */
+:root {
+  --bg: #f2f5f7;
+  --surface: #ffffff;
+  --text: #14232b;
+  --muted: #5b6b74;
+  --accent: #0e6b6b;
+  --accent-text: #ffffff;
+  --line: #d5dde2;
+  --danger: #a12a2a;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a20; --surface: #16252d; --text: #e6eef2; --muted: #98a9b2;
+    --accent: #4fc1bd; --accent-text: #08201f; --line: #26373f; --danger: #ff8d8d;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1a20; --surface: #16252d; --text: #e6eef2; --muted: #98a9b2;
+  --accent: #4fc1bd; --accent-text: #08201f; --line: #26373f; --danger: #ff8d8d;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+*, *::before, *::after { box-sizing: inherit; }
+
+/* ---------- 2. PAGE BASICS ---------- */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.75 "Literata", Georgia, serif;
+}
+.wrap { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+h1, h2 { line-height: 1.25; margin: 0; }
+p { margin: 0 0 1.1em; }
+
+/* ---------- 3. HEADER ---------- */
+.site-header { border-bottom: 1px solid var(--line); }
+.site-header .wrap {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 16px; padding-bottom: 16px; gap: 12px; flex-wrap: wrap;
+}
+.brand {
+  font: 700 1.3rem "DM Sans", system-ui, sans-serif;
+  color: var(--text); background: none; border: 0; padding: 0; cursor: pointer;
+}
+
+/* ---------- 4. BUTTONS ---------- */
+.btn {
+  font: 500 0.95rem "DM Sans", system-ui, sans-serif;
+  padding: 10px 16px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--accent); background: var(--accent); color: var(--accent-text);
+}
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn.danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+.btn:hover { opacity: 0.88; }
+button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--accent); outline-offset: 2px;
+}
+
+/* ---------- 5. POST LIST ---------- */
+.intro { padding: 44px 0 20px; }
+.intro h1 { font-size: 2rem; }
+.intro p { color: var(--muted); margin: 10px 0 0; }
+.post-item { padding: 26px 0; border-bottom: 1px solid var(--line); }
+.post-item h2 { font-size: 1.4rem; }
+.title-link {
+  font: inherit; color: var(--text); background: none; border: 0; padding: 0;
+  text-align: left; cursor: pointer;
+}
+.title-link:hover { color: var(--accent); text-decoration: underline; }
+.meta { font: 400 0.9rem "DM Sans", system-ui, sans-serif; color: var(--muted); margin: 6px 0 10px; }
+.excerpt { margin: 0; }
+.empty { padding: 40px 0; color: var(--muted); }
+
+/* ---------- 6. SINGLE POST ---------- */
+.article { padding: 40px 0 20px; }
+.article h1 { font-size: 2.1rem; }
+.article .body { margin-top: 28px; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 28px 0 40px; }
+.notice {
+  font: 500 0.95rem "DM Sans", system-ui, sans-serif; color: var(--accent);
+  border-left: 3px solid var(--accent); padding-left: 12px; margin-bottom: 20px;
+}
+
+/* ---------- 7. WRITE FORM ---------- */
+.editor { padding: 40px 0; }
+.editor h1 { font-size: 1.8rem; margin-bottom: 22px; }
+label { display: block; font: 500 0.95rem "DM Sans", system-ui, sans-serif; margin: 18px 0 6px; }
+input, textarea {
+  width: 100%; font: inherit; color: var(--text); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;
+}
+textarea { min-height: 220px; resize: vertical; }
+
+/* ---------- 8. FOOTER ---------- */
+.site-footer { border-top: 1px solid var(--line); margin-top: 20px; }
+.site-footer p {
+  font: 400 0.85rem "DM Sans", system-ui, sans-serif; color: var(--muted);
+  padding: 18px 0; margin: 0;
+}
+
+/* ---------- 9. NAVIGATION ---------- */
+.nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.nav-link {
+  font: 500 0.95rem "DM Sans", system-ui, sans-serif; color: var(--muted);
+  background: none; border: 0; border-bottom: 2px solid transparent;
+  padding: 8px 10px; cursor: pointer;
+}
+.nav-link:hover { color: var(--text); }
+.nav-link[aria-current="page"] { color: var(--text); border-bottom-color: var(--accent); }
+.nav .btn { margin-left: 8px; }
+@media (max-width: 560px) {
+  .nav { width: 100%; }
+  .nav .btn { margin-left: auto; }
+}
+
+/* ---------- 10. HOME AND ABOUT ---------- */
+.hero { padding: 56px 0 8px; }
+.hero h1 { font-size: 2.4rem; }
+.hero p { color: var(--muted); font-size: 1.1rem; margin: 14px 0 0; max-width: 34em; }
+.hero .actions { margin: 24px 0 8px; }
+.section-title {
+  font: 700 1.1rem "DM Sans", system-ui, sans-serif;
+  margin: 36px 0 0; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+}
+.article .body ul { margin: 0 0 1.1em; padding-left: 1.2em; }
+.article .body li { margin-bottom: 0.4em; }

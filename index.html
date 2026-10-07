@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plain Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <button class="brand" data-action="home">Plain Notes</button>
+    <nav class="nav" aria-label="Main">
+      <button class="nav-link" data-action="home" data-nav="home">Home</button>
+      <button class="nav-link" data-action="posts" data-nav="posts">Posts</button>
+      <button class="nav-link" data-action="about" data-nav="about">About</button>
+      <button class="btn" data-action="write">Write a post</button>
+    </nav>
+  </div>
+</header>
+
+<!-- JavaScript fills this area with the list, a post, or the form -->
+<main class="wrap" id="app"></main>
+
+<footer class="site-footer">
+  <div class="wrap"><p>Posts are saved in this browser, so they stay when you come back.</p></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
